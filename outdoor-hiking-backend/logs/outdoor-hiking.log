@@ -1,0 +1,168 @@
+2025-12-17 16:24:13.043 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 16:24:13.046 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 16:24:13.047 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 16:24:13.123 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-17 16:24:13.123 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-17 16:24:15.138 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 16:24:15.151 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 16:24:15.152 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 16:24:15.251 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 16:24:15.254 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2130 ms
+2025-12-17 16:24:15.740 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 16:24:15.905 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 16:24:16.268 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48425a46, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11e9360c, org.springframework.security.web.context.SecurityContextHolderFilter@62222c1a, org.springframework.security.web.header.HeaderWriterFilter@4670d50c, org.springframework.web.filter.CorsFilter@751bd12a, org.springframework.security.web.authentication.logout.LogoutFilter@4695a696, com.hiking.config.JwtAuthenticationFilter@209fdd65, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78d286bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@705ef920, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e189c2a, org.springframework.security.web.session.SessionManagementFilter@54eebaf9, org.springframework.security.web.access.ExceptionTranslationFilter@65f157b7, org.springframework.security.web.access.intercept.AuthorizationFilter@3c8cafc5]
+2025-12-17 16:24:16.584 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 16:24:16.628 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-12-17 16:24:16.639 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 4.324 seconds (process running for 5.148)
+2025-12-17 16:25:20.401 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 77 class path changes (0 additions, 74 deletions, 3 modifications)
+2025-12-17 16:25:20.709 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 16:25:20.710 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 16:25:20.710 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 16:25:20.720 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [null]
+2025-12-17 16:25:20.763 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanDefinitionStoreException: I/O failure while processing configuration class [null]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:251) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:197) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:165) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:416) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:289) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:789) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:606) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) ~[spring-boot-3.2.1.jar:3.2.1]
+	at com.hiking.HikingApplication.main(HikingApplication.java:27) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.1.jar:3.2.1]
+Caused by: java.io.FileNotFoundException: class path resource [com/hiking/HikingApplication.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:215) ~[spring-core-6.1.2.jar:6.1.2]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.getClassReader(SimpleMetadataReader.java:54) ~[spring-core-6.1.2.jar:6.1.2]
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:48) ~[spring-core-6.1.2.jar:6.1.2]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:103) ~[spring-core-6.1.2.jar:6.1.2]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:86) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:73) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:81) ~[spring-core-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:630) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:599) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:577) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:244) ~[spring-context-6.1.2.jar:6.1.2]
+	... 20 common frames omitted
+2025-12-17 16:25:26.825 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 16:25:26.827 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 16:25:26.828 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 16:25:27.324 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 16:25:27.326 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 16:25:27.327 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 16:25:27.416 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 16:25:27.417 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 586 ms
+2025-12-17 16:25:27.549 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 16:25:27.666 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 16:25:27.827 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7a94d6d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f4b7431, org.springframework.security.web.context.SecurityContextHolderFilter@3ed4e10f, org.springframework.security.web.header.HeaderWriterFilter@6fb0f200, org.springframework.web.filter.CorsFilter@16b483f3, org.springframework.security.web.authentication.logout.LogoutFilter@52b3433a, com.hiking.config.JwtAuthenticationFilter@746c997e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18832215, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@704bf3f7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3c6d7f93, org.springframework.security.web.session.SessionManagementFilter@3ea0b4c8, org.springframework.security.web.access.ExceptionTranslationFilter@569e0de5, org.springframework.security.web.access.intercept.AuthorizationFilter@7c5ac52b]
+2025-12-17 16:25:27.886 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 16:25:27.902 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-12-17 16:25:27.908 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 1.13 seconds (process running for 76.418)
+2025-12-17 16:25:27.911 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-17 16:26:37.574 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-12-17 16:26:37.738 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 16:26:37.739 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 16:26:37.739 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 16:26:38.171 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8085 (http)
+2025-12-17 16:26:38.172 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 16:26:38.172 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 16:26:38.241 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 16:26:38.241 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 496 ms
+2025-12-17 16:26:38.321 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 16:26:38.385 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 16:26:38.494 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1734887a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@20ea6783, org.springframework.security.web.context.SecurityContextHolderFilter@35feeef1, org.springframework.security.web.header.HeaderWriterFilter@375af9ce, org.springframework.web.filter.CorsFilter@5b7b4903, org.springframework.security.web.authentication.logout.LogoutFilter@7d894c0b, com.hiking.config.JwtAuthenticationFilter@2b508d18, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28ad69ee, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@485971bc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@19932a1b, org.springframework.security.web.session.SessionManagementFilter@e2f2873, org.springframework.security.web.access.ExceptionTranslationFilter@10f1a7ff, org.springframework.security.web.access.intercept.AuthorizationFilter@3d7ffaa5]
+2025-12-17 16:26:38.533 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 16:26:38.543 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8085 (http) with context path ''
+2025-12-17 16:26:38.547 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 0.861 seconds (process running for 147.056)
+2025-12-17 16:26:38.548 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-17 16:26:52.944 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-12-17 16:26:53.083 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 16:26:53.084 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 16:26:53.084 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 16:26:53.433 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 16:26:53.434 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 16:26:53.434 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 16:26:53.496 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 16:26:53.496 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 408 ms
+2025-12-17 16:26:53.575 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 16:26:53.664 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 16:26:53.783 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@45f25a22, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d7e9d46, org.springframework.security.web.context.SecurityContextHolderFilter@72d79b57, org.springframework.security.web.header.HeaderWriterFilter@37e3062c, org.springframework.web.filter.CorsFilter@55a0fff4, org.springframework.security.web.authentication.logout.LogoutFilter@84a13c1, com.hiking.config.JwtAuthenticationFilter@72398c3b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8543359, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@27a98619, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@606a3e7c, org.springframework.security.web.session.SessionManagementFilter@517616ee, org.springframework.security.web.access.ExceptionTranslationFilter@72c1070b, org.springframework.security.web.access.intercept.AuthorizationFilter@4adfe418]
+2025-12-17 16:26:53.817 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 16:26:53.827 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-12-17 16:26:53.830 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 0.793 seconds (process running for 162.341)
+2025-12-17 16:26:53.832 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-17 19:27:52.537 [File Watcher] INFO  o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-12-17 19:27:52.878 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 34888 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 19:27:52.878 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 19:27:52.879 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 19:27:53.328 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 19:27:53.329 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 19:27:53.330 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 19:27:53.397 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 19:27:53.398 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 514 ms
+2025-12-17 19:27:53.518 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 19:27:53.590 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 19:27:53.700 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ab84c12, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@427ac57c, org.springframework.security.web.context.SecurityContextHolderFilter@73777dda, org.springframework.security.web.header.HeaderWriterFilter@43d20013, org.springframework.web.filter.CorsFilter@14bd4c8d, org.springframework.security.web.authentication.logout.LogoutFilter@5a5c44d5, com.hiking.config.JwtAuthenticationFilter@3f030c8e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@b248878, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58a5d397, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e5b5ed6, org.springframework.security.web.session.SessionManagementFilter@52a30828, org.springframework.security.web.access.ExceptionTranslationFilter@52fb09c, org.springframework.security.web.access.intercept.AuthorizationFilter@35b2ce0]
+2025-12-17 19:27:53.749 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 19:27:53.761 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-12-17 19:27:53.765 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 0.944 seconds (process running for 11022.274)
+2025-12-17 19:27:53.766 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-17 19:42:40.654 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 40836 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 19:42:40.657 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 19:42:40.658 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 19:42:40.718 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-17 19:42:40.719 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-17 19:42:42.620 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 19:42:42.635 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 19:42:42.636 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 19:42:42.760 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 19:42:42.761 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2041 ms
+2025-12-17 19:42:43.304 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 19:42:43.442 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 19:42:43.845 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b1e2fdf, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c89f055, org.springframework.security.web.context.SecurityContextHolderFilter@2e43b68d, org.springframework.security.web.header.HeaderWriterFilter@3bf69145, org.springframework.web.filter.CorsFilter@3e21f588, org.springframework.security.web.authentication.logout.LogoutFilter@5f267b2f, com.hiking.config.JwtAuthenticationFilter@714150a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@978a0e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35741cef, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65c17783, org.springframework.security.web.session.SessionManagementFilter@4f8f623b, org.springframework.security.web.access.ExceptionTranslationFilter@910616, org.springframework.security.web.access.intercept.AuthorizationFilter@6997cafb]
+2025-12-17 19:42:44.161 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2025-12-17 19:42:44.182 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-12-17 19:42:44.255 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-17 19:42:44.277 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2025-12-17 19:43:28.792 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 27208 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 19:43:28.795 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 19:43:28.796 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 19:43:28.855 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-17 19:43:28.855 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-17 19:43:30.738 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 19:43:30.750 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 19:43:30.751 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 19:43:30.863 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 19:43:30.864 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2008 ms
+2025-12-17 19:43:31.319 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 19:43:31.467 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 19:43:31.841 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5b4aa1c9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@516ffacf, org.springframework.security.web.context.SecurityContextHolderFilter@3bf69145, org.springframework.security.web.header.HeaderWriterFilter@10b665a4, org.springframework.web.filter.CorsFilter@3d7c1cce, org.springframework.security.web.authentication.logout.LogoutFilter@7ccc1fad, com.hiking.config.JwtAuthenticationFilter@74a1c76, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57923c3b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3445abaa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@e714982, org.springframework.security.web.session.SessionManagementFilter@5a57cfc8, org.springframework.security.web.access.ExceptionTranslationFilter@3cd0beb0, org.springframework.security.web.access.intercept.AuthorizationFilter@31576f00]
+2025-12-17 19:43:32.127 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-12-17 19:43:32.168 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2025-12-17 19:43:32.177 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 3.9 seconds (process running for 4.601)

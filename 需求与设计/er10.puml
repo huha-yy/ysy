@@ -1,0 +1,88 @@
+@startuml
+entity users {
+  *id
+  --
+  username
+  role
+  experience_level
+  health_status
+}
+entity activities {
+  *id
+  --
+  organizer_id
+  title
+  status
+  requirement_info
+  attachments
+}
+entity registrations {
+  *id
+  --
+  activity_id
+  user_id
+  status
+  qualification_info
+}
+entity routes {
+  *id
+  --
+  activity_id
+  distance
+  difficulty_level
+  points_info
+}
+entity checkin_records {
+  *id
+  --
+  activity_id
+  user_id
+  route_id
+  point_index
+  status
+}
+entity trajectory_events {
+  *id
+  --
+  activity_id
+  user_id
+  event_type
+  status
+}
+entity activity_feedback {
+  *id
+  --
+  activity_id
+  user_id
+  rating
+}
+entity system_events {
+  *id
+  --
+  activity_id
+  user_id
+  event_type
+  category
+}
+entity activity_stats {
+  *activity_id
+  --
+  total_registrations
+  completion_rate
+  heat_score
+}
+users ||--o{ activities : organizes
+users ||--o{ registrations : participates
+activities ||--o{ registrations : has
+activities ||--o{ routes : defines
+routes ||--o{ checkin_records : records
+activities ||--o{ checkin_records : contains
+activities ||--o{ trajectory_events : monitors
+activities ||--o{ activity_feedback : receives
+activities ||--o{ system_events : emits
+activities ||--|| activity_stats : summarizes
+users ||--o{ trajectory_events : triggers
+users ||--o{ activity_feedback : authors
+system_events ||--|| users : relates
+@enduml
+

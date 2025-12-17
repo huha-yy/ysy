@@ -1,0 +1,88 @@
+# ==========================================
+# 生产环境配置
+# ==========================================
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://your-production-host:3306/outdoor_hiking?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123666888
+    # Druid 连接池配置
+    druid:
+      initial-size: 10
+      min-idle: 10
+      max-active: 50
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall
+      # 生产环境关闭监控页面
+      stat-view-servlet:
+        enabled: false
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+  # Redis 配置（暂时不使用）
+  # data:
+  #   redis:
+  #     host: ${REDIS_HOST:localhost}
+  #     port: ${REDIS_PORT:6379}
+  #     database: 0
+  #     password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+          max-wait: -1ms
+
+# MyBatis Plus 生产环境配置
+mybatis-plus:
+  configuration:
+    # 生产环境关闭SQL日志
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+# SpringDoc 生产环境配置
+springdoc:
+  api-docs:
+    # 生产环境可以选择关闭API文档
+    enabled: false
+  swagger-ui:
+    enabled: false
+
+# 日志级别 - 生产环境
+logging:
+  level:
+    root: WARN
+    com.hiking: INFO
+    com.hiking.mapper: WARN
+  file:
+    # 生产环境日志文件配置
+    path: /var/logs/outdoor-hiking
+    name: /var/logs/outdoor-hiking/outdoor-hiking.log
+    # 日志文件最大大小
+    max-size: 100MB
+    # 日志文件最大保留天数
+    max-history: 30
+
+# JWT 生产环境配置
+jwt:
+  # 生产环境务必使用环境变量或配置中心
+  secret: ${JWT_SECRET:outdoor-hiking-system-jwt-secret-key-2025-change-me-in-production}
+  expiration: 604800000
+
+# 服务器配置
+server:
+  port: ${SERVER_PORT:8080}
+
