@@ -122,6 +122,14 @@ public class Constants {
          */
         public static final String CANCELLED = "cancelled";
     }
+    
+    // 快捷访问常量（为了向后兼容）
+    String ROLE_ADMIN = Role.ADMIN;
+    String ROLE_ORGANIZER = Role.ORGANIZER;
+    String ROLE_PARTICIPANT = Role.PARTICIPANT;
+    String REGISTRATION_STATUS_APPROVED = RegistrationStatus.APPROVED;
+    String REGISTRATION_STATUS_PENDING = RegistrationStatus.PENDING;
+    String REGISTRATION_STATUS_REJECTED = RegistrationStatus.REJECTED;
 
     /**
      * 签到状态

@@ -50,6 +50,16 @@ public enum ResultCode {
      * 无权限
      */
     FORBIDDEN(2002, "无权限访问"),
+    
+    /**
+     * 资源不存在
+     */
+    NOT_FOUND(2003, "资源不存在"),
+    
+    /**
+     * 业务错误
+     */
+    BUSINESS_ERROR(3001, "业务处理失败"),
 
     /**
      * 账号或密码错误

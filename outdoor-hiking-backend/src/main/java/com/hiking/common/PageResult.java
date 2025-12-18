@@ -74,6 +74,13 @@ public class PageResult<T> implements Serializable {
     }
 
     /**
+     * 从 MyBatis Plus 的 IPage 转换（别名方法）
+     */
+    public static <T> PageResult<T> of(IPage<T> page) {
+        return from(page);
+    }
+
+    /**
      * 构建分页结果
      */
     public static <T> PageResult<T> build(List<T> records, Long total, Long current, Long size) {

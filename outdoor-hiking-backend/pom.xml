@@ -34,7 +34,6 @@
         <mysql.version>8.0.33</mysql.version>
         <druid.version>1.2.20</druid.version>
         <jwt.version>0.12.3</jwt.version>
-        <springdoc.version>2.3.0</springdoc.version>
         <lombok.version>1.18.30</lombok.version>
         <hutool.version>5.8.24</hutool.version>
         <fastjson.version>2.0.45</fastjson.version>
@@ -115,17 +114,11 @@
         </dependency>
 
         <!-- Swagger 注解依赖（仅用于API文档注解，不包含自动配置） -->
+        <!-- Knife4j API 文档（Spring Boot 3 专用版本） -->
         <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations-jakarta</artifactId>
-            <version>2.2.19</version>
-        </dependency>
-        
-        <!-- SpringDoc OpenAPI (提供 Swagger UI 与 /v3/api-docs) -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <version>4.3.0</version>
         </dependency>
 
         <!-- Lombok -->

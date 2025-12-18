@@ -31,8 +31,11 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                        // API 文档相关路径（Knife4j + Swagger）
+                        .requestMatchers("/doc.html", "/webjars/**", "/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        // 公开路径
                         .requestMatchers("/api/auth/**", "/actuator/**", "/druid/**").permitAll()
+                        // 其他请求需要认证
                         .anyRequest().authenticated())
                 .exceptionHandling(this::configureExceptionHandling)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);

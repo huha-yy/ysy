@@ -72,19 +72,6 @@ mybatis-plus:
     call-setters-on-nulls: true
 
 # ==========================================
-# SpringDoc OpenAPI 配置 (Swagger UI)
-# ==========================================
-springdoc:
-  api-docs:
-    enabled: true
-    path: /v3/api-docs
-  swagger-ui:
-    enabled: true
-    path: /swagger-ui.html
-  default-consumes-media-type: application/json
-  default-produces-media-type: application/json
-
-# ==========================================
 # JWT 配置
 # ==========================================
 jwt:
@@ -149,6 +136,43 @@ server:
     max-connections: 10000
     # 连接超时时间 (毫秒)
     connection-timeout: 60000
+
+# ==========================================
+# Knife4j API 文档配置
+# ==========================================
+knife4j:
+  # 开启增强功能
+  enable: true
+  # 开启生产环境屏蔽
+  production: false
+  # 基础配置
+  setting:
+    # 自定义底部
+    enable-footer-custom: true
+    footer-custom-content: Powered by Hiking Team
+    # 开启搜索
+    enable-search: true
+    # 开启动态参数
+    enable-dynamic-parameter: true
+
+# ==========================================
+# SpringDoc OpenAPI 配置 (Swagger UI + 组)
+# ==========================================
+springdoc:
+  api-docs:
+    # API文档路径
+    path: /v3/api-docs
+    enabled: true
+  swagger-ui:
+    # Swagger UI路径
+    path: /swagger-ui.html
+    enabled: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  group-configs:
+    - group: '户外徒步系统'
+      paths-to-match: /api/**
+      packages-to-scan: com.hiking.controller
 
 # ==========================================
 # 管理端点配置

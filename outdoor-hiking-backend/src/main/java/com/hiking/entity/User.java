@@ -1,6 +1,7 @@
 package com.hiking.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -39,6 +40,7 @@ public class User implements Serializable {
      */
     @TableField("password")
     @Schema(description = "密码", example = "********")
+    @JsonIgnore
     private String password;
 
     /**

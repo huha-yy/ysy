@@ -44,7 +44,8 @@ public class HikingApplication {
         System.out.println("\t户外徒步活动管理系统 - 启动成功！");
         System.out.println("\t本地访问地址:\thttp://localhost:" + port + rootLocal);
         System.out.println("\t外部访问地址:\thttp://" + ip + ":" + port + rootExternal);
-        System.out.println("\tSwagger文档:\thttp://localhost:" + port + basePath + "/swagger-ui.html");
+        System.out.println("\tKnife4j文档:\thttp://localhost:" + port + basePath + "/doc.html");
+        System.out.println("\tSwagger UI:\thttp://localhost:" + port + basePath + "/swagger-ui.html");
         System.out.println("\tAPI文档:\t\thttp://localhost:" + port + basePath + "/v3/api-docs");
         System.out.println("\tDruid监控:\thttp://localhost:" + port + basePath + "/druid");
         System.out.println("----------------------------------------------------------\n");

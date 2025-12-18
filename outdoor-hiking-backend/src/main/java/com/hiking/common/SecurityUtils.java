@@ -22,6 +22,15 @@ public class SecurityUtils {
         LoginUser loginUser = getLoginUser();
         return loginUser == null ? null : loginUser.getUser().getId();
     }
+    
+    public static Long getCurrentUserId() {
+        return getUserId();
+    }
+    
+    public static String getCurrentUserRole() {
+        LoginUser loginUser = getLoginUser();
+        return loginUser == null ? null : loginUser.getUser().getRole();
+    }
 
     public static String getUsername() {
         LoginUser loginUser = getLoginUser();

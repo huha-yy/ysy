@@ -2,7 +2,7 @@ package com.hiking.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.hiking.entity.User;
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,11 +13,12 @@ import java.util.Collections;
 /**
  * Spring Security UserDetails 实现
  */
-@Data
 public class LoginUser implements UserDetails {
 
+    @Getter
     private final User user;
 
+    @JsonIgnore
     private final Collection<? extends GrantedAuthority> authorities;
 
     public LoginUser(User user) {

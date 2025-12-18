@@ -1,0 +1,50 @@
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+  background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(46, 125, 50, 0.7);
+  }
+
+  .login-card {
+    position: relative;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+
+    .login-header {
+      text-align: center;
+      margin-bottom: 32px;
+
+      h1 {
+        font-size: 32px;
+        margin: 0 0 8px 0;
+        color: #2E7D32;
+      }
+
+      p {
+        margin: 0;
+        color: rgba(0, 0, 0, 0.65);
+      }
+    }
+
+    .login-footer {
+      text-align: center;
+      color: rgba(0, 0, 0, 0.65);
+    }
+  }
+}
+

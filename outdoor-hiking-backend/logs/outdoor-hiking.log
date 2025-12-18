@@ -166,3 +166,35 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2025-12-17 19:43:32.127 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
 2025-12-17 19:43:32.168 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
 2025-12-17 19:43:32.177 [restartedMain] INFO  com.hiking.HikingApplication - Started HikingApplication in 3.9 seconds (process running for 4.601)
+2025-12-17 22:46:14.900 [restartedMain] INFO  com.hiking.HikingApplication - Starting HikingApplication using Java 17.0.12 with PID 12928 (E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend\target\classes started by ysy in E:\1huah毕业设计\毕设-户外徒步活动管理系统\ysy\outdoor-hiking-backend)
+2025-12-17 22:46:14.902 [restartedMain] DEBUG com.hiking.HikingApplication - Running with Spring Boot v3.2.1, Spring v6.1.2
+2025-12-17 22:46:14.903 [restartedMain] INFO  com.hiking.HikingApplication - The following 1 profile is active: "dev"
+2025-12-17 22:46:14.961 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-12-17 22:46:14.962 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-12-17 22:46:16.776 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-12-17 22:46:16.789 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-12-17 22:46:16.789 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.17]
+2025-12-17 22:46:16.895 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-12-17 22:46:16.895 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1933 ms
+2025-12-17 22:46:17.376 [restartedMain] DEBUG com.hiking.config.JwtAuthenticationFilter - Filter 'jwtAuthenticationFilter' configured for use
+2025-12-17 22:46:17.624 [restartedMain] DEBUG o.s.s.c.a.a.c.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder - No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2025-12-17 22:46:18.784 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@bb2464f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@38c412d4, org.springframework.security.web.context.SecurityContextHolderFilter@530dd8b7, org.springframework.security.web.header.HeaderWriterFilter@2e2cf2aa, org.springframework.web.filter.CorsFilter@3e5905a2, org.springframework.security.web.authentication.logout.LogoutFilter@6d07ffc, com.hiking.config.JwtAuthenticationFilter@1109871d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@75cfdba, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4034b7f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@470ba265, org.springframework.security.web.session.SessionManagementFilter@fb53f2c, org.springframework.security.web.access.ExceptionTranslationFilter@610cbe89, org.springframework.security.web.access.intercept.AuthorizationFilter@200268ed]
+2025-12-17 22:46:19.103 [restartedMain] WARN  o.s.b.d.autoconfigure.OptionalLiveReloadServer - Unable to start LiveReload server
+2025-12-17 22:46:19.123 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2025-12-17 22:46:19.198 [restartedMain] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-17 22:46:19.221 [restartedMain] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
