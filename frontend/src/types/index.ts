@@ -40,9 +40,14 @@ export interface Route {
   distance: number
   elevationGain: number
   difficultyLevel: string
-  pointsInfo: RoutePoint[]
+  pointsInfo: RoutePoint[] | any // 后端使用Object存储，前端使用RoutePoint[]
   mapImgUrl?: string
   description?: string
+  geojsonPath?: string
+  createdBy?: number
+  updatedBy?: number
+  createdAt?: string
+  updatedAt?: string
 }
 
 // 路线点位

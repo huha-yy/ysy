@@ -8,12 +8,7 @@ import com.hiking.entity.Registration;
 import com.hiking.service.RegistrationService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 报名审核接口
@@ -37,6 +32,15 @@ public class RegistrationController {
     public Result<?> review(@Valid @RequestBody RegistrationReviewRequest request) {
         registrationService.reviewRegistration(request);
         return Result.success("审核完成");
+    }
+    
+    /**
+     * 获取当前用户对指定活动的报名状态
+     */
+    @GetMapping("/activity/{activityId}/user")
+    public Result<Registration> getUserRegistration(@PathVariable Long activityId) {
+        Registration registration = registrationService.getUserRegistrationForActivity(activityId);
+        return Result.success(registration);
     }
 }
 

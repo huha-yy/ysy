@@ -3,7 +3,7 @@ import { Button, Row, Col, Card, Statistic } from 'antd'
 import {
   EnvironmentOutlined,
   ClockCircleOutlined,
-  TeamOutlined,
+  UsergroupAddOutlined,
   StarOutlined,
 } from '@ant-design/icons'
 import './index.less'
@@ -38,7 +38,7 @@ function Home() {
         <div className="container">
           <Row gutter={[32, 32]}>
             <Col xs={12} sm={12} md={6}>
-              <Card bordered={false} className="stat-card">
+              <Card variant="borderless" className="stat-card">
                 <Statistic
                   title="累计活动"
                   value={1200}
@@ -49,18 +49,18 @@ function Home() {
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>
-              <Card bordered={false} className="stat-card">
+              <Card variant="borderless" className="stat-card">
                 <Statistic
                   title="活跃用户"
                   value={5000}
                   suffix="+"
-                  prefix={<TeamOutlined />}
+                  prefix={<UsergroupAddOutlined />}
                   valueStyle={{ color: '#1976D2' }}
                 />
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>
-              <Card bordered={false} className="stat-card">
+              <Card variant="borderless" className="stat-card">
                 <Statistic
                   title="累计里程"
                   value={50000}
@@ -71,7 +71,7 @@ function Home() {
               </Card>
             </Col>
             <Col xs={12} sm={12} md={6}>
-              <Card bordered={false} className="stat-card">
+              <Card variant="borderless" className="stat-card">
                 <Statistic
                   title="平均评分"
                   value={4.8}
@@ -91,21 +91,21 @@ function Home() {
           <h2 className="section-title">为什么选择我们</h2>
           <Row gutter={[24, 24]}>
             <Col xs={24} sm={12} md={8}>
-              <Card className="feature-card" bordered={false}>
+              <Card className="feature-card" variant="borderless">
                 <div className="feature-icon">🗺️</div>
                 <h3>智能路线规划</h3>
                 <p>精确的GPS定位和实时路线导航，让你的每一步都更安全</p>
               </Card>
             </Col>
             <Col xs={24} sm={12} md={8}>
-              <Card className="feature-card" bordered={false}>
+              <Card className="feature-card" variant="borderless">
                 <div className="feature-icon">📍</div>
                 <h3>实时位置追踪</h3>
                 <p>实时监控参与者位置，智能预警偏离和延迟，保障安全</p>
               </Card>
             </Col>
             <Col xs={24} sm={12} md={8}>
-              <Card className="feature-card" bordered={false}>
+              <Card className="feature-card" variant="borderless">
                 <div className="feature-icon">📊</div>
                 <h3>数据统计分析</h3>
                 <p>详细的活动数据和个人成就记录，见证你的每一次成长</p>

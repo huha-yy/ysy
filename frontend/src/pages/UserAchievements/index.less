@@ -1,0 +1,113 @@
+.user-achievements-page {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 64px);
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ant-card {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .ant-card-head {
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .ant-card-body {
+    .achievement-summary {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .summary-item {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .level-bar {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      height: 6px;
+      background-color: #f0f0f0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-right: 8px;
+    }
+
+    .level-indicator {
+      width: 8px;
+      height: 8px;
+      background-color: #fff;
+      border-radius: 50%;
+    }
+
+    .level-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      background-color: rgba(0, 0, 0, 0.03);
+      border-radius: 4px;
+      margin: 0 4px;
+    }
+
+    .level-current {
+      composes: 'translateX(-4px)';
+      background-color: inherit;
+    }
+
+    .level-progress {
+      composes: 'translateX(0)';
+      background-color: inherit;
+    }
+
+    .ant-statistic {
+      text-align: center;
+    }
+
+    .ant-table {
+      .ant-table-thead > tr > th {
+        background-color: #fafafa;
+        font-weight: 600;
+      }
+    }
+
+    .ant-btn {
+      border-radius: 6px;
+    }
+
+    .ant-tag {
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+
+    .ant-pagination {
+      margin-top: 24px;
+      text-align: right;
+    }
+
+    .ant-empty {
+      margin: 40px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .stat-item {
+      background-color: rgba(0, 0, 0, 0.03);
+      padding: 16px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  }
+}

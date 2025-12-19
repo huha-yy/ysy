@@ -15,6 +15,7 @@ import com.hiking.service.SystemEventService;
 import com.hiking.service.TrajectoryEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -31,6 +32,7 @@ public class TrajectoryEventServiceImpl extends ServiceImpl<TrajectoryEventMappe
     private final SystemEventService systemEventService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public TrajectoryEvent createEvent(TrajectoryEventCreateRequest request) {
         TrajectoryEvent event = new TrajectoryEvent();
         event.setActivityId(request.getActivityId());
@@ -76,6 +78,7 @@ public class TrajectoryEventServiceImpl extends ServiceImpl<TrajectoryEventMappe
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void resolveEvent(TrajectoryEventResolveRequest request) {
         TrajectoryEvent event = trajectoryEventMapper.selectById(request.getId());
         if (event == null) {

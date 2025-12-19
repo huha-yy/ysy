@@ -11,8 +11,7 @@
       "name": "jwt.expiration",
       "type": "java.lang.Long",
       "description": "Token 过期时间（毫秒）",
-      "sourceType": "com.hiking.config.JwtProperties",
-      "defaultValue": 0
+      "sourceType": "com.hiking.config.JwtProperties"
     },
     {
       "name": "jwt.header",

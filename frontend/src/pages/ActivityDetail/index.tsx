@@ -29,6 +29,8 @@ import {
   DollarOutlined,
   ExclamationCircleOutlined,
   StarOutlined,
+  PlusOutlined,
+  EditOutlined,
 } from '@ant-design/icons'
 import { getActivityById, getActivityRoutes, registerActivity, getRegistrationStatus } from '@/api/activity'
 import { useAuthStore } from '@/store/useAuthStore'
@@ -336,26 +338,111 @@ function ActivityDetail() {
         <Row gutter={[24, 24]} style={{ marginTop: 24 }}>
           <Col xs={24} md={12}>
             <Card title="活动要求" variant="outlined">
-              <div dangerouslySetInnerHTML={{ __html: activity.requirementInfo || '暂无特殊要求' }} />
+              {(() => {
+                // 解析 requirementInfo
+                const requirement = activity.requirementInfo
+                if (!requirement) {
+                  return <Text type="secondary">暂无特殊要求</Text>
+                }
+                
+                // 如果是对象，解析并显示
+                if (typeof requirement === 'object') {
+                  return (
+                    <Space direction="vertical" style={{ width: '100%' }}>
+                      {requirement.experience && (
+                        <div>
+                          <Text strong>经验要求：</Text>
+                          <Paragraph>{requirement.experience}</Paragraph>
+                        </div>
+                      )}
+                      {requirement.health && (
+                        <div>
+                          <Text strong>健康要求：</Text>
+                          <Paragraph>{requirement.health}</Paragraph>
+                        </div>
+                      )}
+                      {requirement.gear && (
+                        <div>
+                          <Text strong>装备要求：</Text>
+                          <Paragraph>
+                            {Array.isArray(requirement.gear) 
+                              ? requirement.gear.join('、') 
+                              : requirement.gear}
+                          </Paragraph>
+                        </div>
+                      )}
+                    </Space>
+                  )
+                }
+                
+                // 如果是字符串，直接显示
+                return <Paragraph>{requirement}</Paragraph>
+              })()}
             </Card>
           </Col>
           <Col xs={24} md={12}>
-            <Card title="路线信息" variant="outlined">
+            <Card 
+              title="路线信息" 
+              variant="outlined"
+              extra={
+                (user?.role === 'organizer' || user?.role === 'admin') && (
+                  <Button 
+                    type="primary" 
+                    size="small" 
+                    icon={<PlusOutlined />}
+                    onClick={() => navigate(`/organizer/routes/create/${id}`)}
+                  >
+                    添加路线
+                  </Button>
+                )
+              }
+            >
               {routes.length > 0 ? (
                 <Space direction="vertical" style={{ width: '100%' }}>
                   {routes.map(route => (
-                    <div key={route.id} className="route-item">
-                      <div className="route-name">{route.name}</div>
-                      <div className="route-details">
-                        <span>距离: {route.distance}km</span>
-                        <span>累计爬升: {route.elevationGain}m</span>
-                        <span>难度: {route.difficultyLevel}</span>
+                    <div key={route.id} className="route-item" style={{ 
+                      padding: '12px', 
+                      border: '1px solid #f0f0f0', 
+                      borderRadius: '6px',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center'
+                    }}>
+                      <div>
+                        <div className="route-name" style={{ fontWeight: 600, marginBottom: '4px' }}>{route.name}</div>
+                        <div className="route-details">
+                          <span style={{ marginRight: '12px' }}>距离: {route.distance}km</span>
+                          <span style={{ marginRight: '12px' }}>累计爬升: {route.elevationGain}m</span>
+                          <span>难度: {route.difficultyLevel}</span>
+                        </div>
                       </div>
+                      {(user?.role === 'organizer' || user?.role === 'admin') && (
+                        <Button 
+                          type="link" 
+                          icon={<EditOutlined />}
+                          onClick={() => navigate(`/organizer/routes/edit/${route.id}`)}
+                        >
+                          编辑
+                        </Button>
+                      )}
                     </div>
                   ))}
                 </Space>
               ) : (
-                <Empty description="暂无路线信息" />
+                <Empty 
+                  description="暂无路线信息" 
+                  image={Empty.PRESENTED_IMAGE_SIMPLE}
+                >
+                  {(user?.role === 'organizer' || user?.role === 'admin') && (
+                    <Button 
+                      type="primary" 
+                      icon={<PlusOutlined />}
+                      onClick={() => navigate(`/organizer/routes/create/${id}`)}
+                    >
+                      创建路线
+                    </Button>
+                  )}
+                </Empty>
               )}
             </Card>
           </Col>

@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { message } from 'antd'
+import { message } from './message'
 import type { ApiResponse } from '@/types'
 
 // 创建 axios 实例
@@ -11,10 +11,10 @@ const request = axios.create({
 // 请求拦截器
 request.interceptors.request.use(
   (config) => {
-    // 从 localStorage 获取 token
+    // 从 localStorage 获取 token（后端已经返回了完整的 token，包含 Bearer 前缀）
     const token = localStorage.getItem('token')
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`
+      config.headers.Authorization = token
     }
     return config
   },

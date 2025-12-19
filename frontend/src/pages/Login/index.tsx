@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Form, Input, Button, Card, message } from 'antd'
+import { Form, Input, Button, Card, App } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { login } from '@/api/auth'
 import { useAuthStore } from '@/store/useAuthStore'
@@ -9,6 +9,7 @@ function Login() {
   const navigate = useNavigate()
   const { setAuth } = useAuthStore()
   const [form] = Form.useForm()
+  const { message } = App.useApp()
 
   const handleSubmit = async (values: { username: string; password: string }) => {
     try {

@@ -1,0 +1,156 @@
+.user-trajectory-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: calc(100vh - 64px);
+
+  .trajectory-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+
+    .trajectory-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      .header-info {
+        h3 {
+          margin: 0 0 8px 0;
+          font-size: 24px;
+          font-weight: 600;
+          color: #1890ff;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        p {
+          margin: 0;
+          color: #666;
+          font-size: 14px;
+        }
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+    }
+
+    .trajectory-tabs {
+      margin-bottom: 16px;
+
+      :global(.ant-tabs-tab) {
+        padding: 12px 16px;
+      }
+
+      :global(.ant-tabs-tab-active) {
+        font-weight: 500;
+      }
+    }
+
+    .trajectory-table {
+      :global(.ant-table-thead > tr > th) {
+        background-color: #fafafa;
+        font-weight: 500;
+      }
+
+      :global(.ant-table-tbody > tr:hover > td) {
+        background-color: #f0f8ff;
+      }
+    }
+
+    .activity-info {
+      .activity-name {
+        font-weight: 500;
+        font-size: 16px;
+        margin-bottom: 4px;
+      }
+
+      .activity-date {
+        color: #666;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+    }
+
+    .route-info {
+      .route-name {
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .route-image {
+        width: 80px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #f0f0f0;
+      }
+    }
+
+    .time-info {
+      div {
+        margin-bottom: 4px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .duration {
+        color: #666;
+        font-style: italic;
+      }
+    }
+
+    .checkin-info {
+      .progress-bar {
+        width: 100px;
+        height: 6px;
+        background-color: #f0f0f0;
+        border-radius: 3px;
+        overflow: hidden;
+        margin-top: 4px;
+
+        .progress-fill {
+          height: 100%;
+          background-color: #52c41a;
+          transition: width 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .user-trajectory-container {
+    padding: 16px;
+
+    .trajectory-card {
+      .trajectory-header {
+        flex-direction: column;
+
+        .header-actions {
+          width: 100%;
+          justify-content: space-between;
+
+          button {
+            flex: 1;
+          }
+        }
+      }
+
+      :global(.ant-table) {
+        font-size: 12px;
+      }
+    }
+  }
+}

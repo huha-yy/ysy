@@ -1,5 +1,5 @@
 import { BrowserRouter } from 'react-router-dom'
-import { ConfigProvider } from 'antd'
+import { ConfigProvider, App as AntdApp } from 'antd'
 import AppRouter from './router'
 
 // 配置Ant Design全局参数
@@ -12,9 +12,11 @@ const theme = {
 function App() {
   return (
     <ConfigProvider theme={theme}>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
+      <AntdApp>
+        <BrowserRouter>
+          <AppRouter />
+        </BrowserRouter>
+      </AntdApp>
     </ConfigProvider>
   )
 }

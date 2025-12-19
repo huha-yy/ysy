@@ -6,6 +6,7 @@ import com.hiking.dto.activity.ActivityCreateRequest;
 import com.hiking.dto.activity.ActivityUpdateRequest;
 import com.hiking.entity.Activity;
 import com.hiking.service.ActivityService;
+import com.hiking.vo.ActivityVO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -30,9 +31,8 @@ public class ActivityController {
     }
 
     @GetMapping("/{id}")
-    public Result<Activity> detail(@PathVariable Long id) {
-        activityService.requireOrganizerOrAdmin(id);
-        return Result.success(activityService.getById(id));
+    public Result<ActivityVO> detail(@PathVariable Long id) {
+        return Result.success(activityService.getActivityVO(id));
     }
 
     @PostMapping

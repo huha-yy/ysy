@@ -97,21 +97,25 @@ export const submitFeedback = (data: {
   comment?: string
   tags?: string[]
 }) => {
-  return request.post<any, ActivityFeedback>('/activity-feedback', data)
+  return request.post<any, ActivityFeedback>('/feedbacks', data)
 }
 
 // 获取活动反馈列表
 export const getFeedbackList = (activityId?: number, page?: number, size?: number) => {
+  if (activityId) {
+    // 使用活动特定端点
+    return request.get<any, ActivityFeedback[]>(`/feedbacks/activity/${activityId}`)
+  }
+  // 使用分页端点
   const params: any = {}
-  if (activityId) params.activityId = activityId
   if (page) params.page = page
   if (size) params.size = size
-  return request.get<any, ActivityFeedback[]>('/activity-feedback', { params })
+  return request.get<any, ActivityFeedback[]>('/feedbacks/page', { params })
 }
 
 // 获取活动反馈统计
 export const getFeedbackStats = (activityId: number) => {
-  return request.get<any, any>(`/activity-feedback/activity/${activityId}/statistics`)
+  return request.get<any, any>(`/feedbacks/activity/${activityId}/statistics`)
 }
 
 // 组织者相关API

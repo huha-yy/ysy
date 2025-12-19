@@ -4,18 +4,26 @@ import cn.hutool.core.util.ObjectUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hiking.common.Constants;
 import com.hiking.common.PageResult;
 import com.hiking.common.SecurityUtils;
 import com.hiking.dto.activity.ActivityCreateRequest;
 import com.hiking.dto.activity.ActivityUpdateRequest;
 import com.hiking.entity.Activity;
+import com.hiking.entity.Registration;
+import com.hiking.entity.User;
 import com.hiking.exception.BusinessException;
 import com.hiking.mapper.ActivityMapper;
+import com.hiking.mapper.RegistrationMapper;
+import com.hiking.mapper.UserMapper;
 import com.hiking.service.ActivityService;
 import com.hiking.service.SystemEventService;
+import com.hiking.vo.ActivityVO;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import static com.hiking.common.ResultCode.ACTIVITY_NOT_FOUND;
@@ -24,12 +32,16 @@ import static com.hiking.common.ResultCode.FORBIDDEN;
 /**
  * 活动服务实现
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> implements ActivityService {
 
     private final ActivityMapper activityMapper;
     private final SystemEventService systemEventService;
+    private final ObjectMapper objectMapper;
+    private final UserMapper userMapper;
+    private final RegistrationMapper registrationMapper;
 
     @Override
     public PageResult<Activity> pageActivities(int page, int size, String status, String keyword) {
@@ -46,6 +58,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Activity createActivity(ActivityCreateRequest request) {
         Activity activity = new Activity();
         activity.setTitle(request.getTitle());
@@ -57,8 +70,29 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
         activity.setEndTime(request.getEndTime());
         activity.setCapacity(request.getCapacity());
         activity.setFeeInfo(request.getFeeInfo());
-        activity.setRequirementInfo(request.getRequirementInfo());
-        activity.setAttachments(request.getAttachments());
+        
+        // 处理 requirementInfo: 如果是JSON字符串，需要先解析为Object
+        if (StringUtils.hasText(request.getRequirementInfo())) {
+            try {
+                Object requirementObj = objectMapper.readValue(request.getRequirementInfo(), Object.class);
+                activity.setRequirementInfo(requirementObj);
+            } catch (Exception e) {
+                log.error("解析requirementInfo失败: {}", request.getRequirementInfo(), e);
+                throw new BusinessException(4000, "活动要求信息格式错误");
+            }
+        }
+        
+        // 处理 attachments: 如果是JSON字符串，需要先解析为Object
+        if (StringUtils.hasText(request.getAttachments())) {
+            try {
+                Object attachmentsObj = objectMapper.readValue(request.getAttachments(), Object.class);
+                activity.setAttachments(attachmentsObj);
+            } catch (Exception e) {
+                log.error("解析attachments失败: {}", request.getAttachments(), e);
+                throw new BusinessException(4000, "附件信息格式错误");
+            }
+        }
+        
         activity.setOrganizerId(SecurityUtils.getUserId());
         activity.setStatus(Constants.ActivityStatus.PENDING);
         activityMapper.insert(activity);
@@ -66,6 +100,7 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Activity updateActivity(Long id, ActivityUpdateRequest request) {
         Activity activity = requireOrganizerOrAdmin(id);
         if (StringUtils.hasText(request.getTitle())) {
@@ -95,17 +130,34 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
         if (StringUtils.hasText(request.getFeeInfo())) {
             activity.setFeeInfo(request.getFeeInfo());
         }
+        
+        // 处理 requirementInfo: 如果是JSON字符串，需要先解析为Object
         if (StringUtils.hasText(request.getRequirementInfo())) {
-            activity.setRequirementInfo(request.getRequirementInfo());
+            try {
+                Object requirementObj = objectMapper.readValue(request.getRequirementInfo(), Object.class);
+                activity.setRequirementInfo(requirementObj);
+            } catch (Exception e) {
+                log.error("解析requirementInfo失败: {}", request.getRequirementInfo(), e);
+                throw new BusinessException(4000, "活动要求信息格式错误");
+            }
         }
+        
+        // 处理 attachments: 如果是JSON字符串，需要先解析为Object
         if (StringUtils.hasText(request.getAttachments())) {
-            activity.setAttachments(request.getAttachments());
+            try {
+                Object attachmentsObj = objectMapper.readValue(request.getAttachments(), Object.class);
+                activity.setAttachments(attachmentsObj);
+            } catch (Exception e) {
+                log.error("解析attachments失败: {}", request.getAttachments(), e);
+                throw new BusinessException(4000, "附件信息格式错误");
+            }
         }
         activityMapper.updateById(activity);
         return activity;
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void changeStatus(Long id, String status) {
         Activity activity = requireOrganizerOrAdmin(id);
         activity.setStatus(status);
@@ -142,5 +194,30 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
         
         wrapper.orderByDesc(Activity::getStartTime);
         return PageResult.from(activityMapper.selectPage(pager, wrapper));
+    }
+    
+    @Override
+    public ActivityVO getActivityVO(Long id) {
+        // 查询活动信息
+        Activity activity = activityMapper.selectById(id);
+        if (activity == null) {
+            throw new BusinessException(ACTIVITY_NOT_FOUND);
+        }
+        
+        // 查询组织者信息
+        User organizer = userMapper.selectById(activity.getOrganizerId());
+        String organizerName = organizer != null ? 
+            (StringUtils.hasText(organizer.getRealName()) ? organizer.getRealName() : organizer.getUsername()) 
+            : "未知组织者";
+        
+        // 查询当前已通过审核的报名人数
+        Integer currentParticipants = Math.toIntExact(registrationMapper.selectCount(
+            new LambdaQueryWrapper<Registration>()
+                .eq(Registration::getActivityId, id)
+                .eq(Registration::getStatus, "approved")
+        ));
+        
+        // 转换为 VO
+        return ActivityVO.fromEntity(activity, organizerName, currentParticipants);
     }
 }

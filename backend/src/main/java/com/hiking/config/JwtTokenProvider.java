@@ -66,6 +66,22 @@ public class JwtTokenProvider {
         Claims claims = getClaims(token);
         return claims.get("role", String.class);
     }
+    
+    // 直接从token获取用户ID，不依赖CurrentUserHolder
+    public Long getUserIdFromToken(String token) {
+        try {
+            String actualToken = removePrefix(token);
+            Claims claims = Jwts.parser()
+                    .setSigningKey(Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes(StandardCharsets.UTF_8)))
+                    .build()
+                    .parseClaimsJws(actualToken)
+                    .getBody();
+            return claims.get("userId", Long.class);
+        } catch (Exception e) {
+            System.out.println("DEBUG: Error parsing token: " + e.getMessage());
+            return null;
+        }
+    }
 
     public String removePrefix(String token) {
         if (token != null && token.startsWith(jwtProperties.getTokenPrefix())) {

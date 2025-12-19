@@ -22,6 +22,7 @@ import com.hiking.service.SystemEventService;
 import com.hiking.service.TrajectoryEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -42,6 +43,7 @@ public class CheckinRecordServiceImpl extends ServiceImpl<CheckinRecordMapper, C
     private final ActivityMapper activityMapper;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public CheckinRecord submit(CheckinRecordRequest request) {
         // 1. 获取当前用户
         Long userId = SecurityUtils.getUserId();

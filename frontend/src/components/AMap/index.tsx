@@ -36,7 +36,7 @@ const AMap: React.FC<AMapProps> = ({
       try {
         // 加载高德地图
         await AMapLoader.load({
-          key: '您的密钥', // 需要替换为实际的密钥
+          key: '4e498e7dde5c0916ebd506fb723f1706', // 需要替换为实际的密钥
           version: '2.0',
           plugins: ['AMap.Geolocation', 'AMap.Marker', 'AMap.Polyline'],
         })

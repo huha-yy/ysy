@@ -34,27 +34,32 @@ export const updateUserProfile = (data: {
   return request.put<any, User>('/auth/me', data)
 }
 
-// 获取用户参与的活动列表 - 使用活动API筛选当前用户报名的活动
+// 获取用户参与的活动列表
 export const getUserActivities = (params?: {
   page?: number
   size?: number
   status?: string
 }) => {
-  // 后端没有特定的用户活动端点，暂时返回空数组
-  // 实际应该通过报名API获取用户报名的活动
-  console.warn('API端点 /users/activities 不存在，返回空数组')
-  return Promise.resolve({ records: [], total: 0 })
+  // 使用后端API获取用户参与的活动
+  const queryParams: any = {}
+  if (params?.page) queryParams.page = params.page
+  if (params?.size) queryParams.size = params.size
+  if (params?.status) queryParams.status = params.status
+  
+  return request.get<any, any>('/users/activities', { params: queryParams })
 }
 
-// 获取用户的签到记录 - 使用签到API筛选当前用户的签到记录
+// 获取用户的签到记录
 export const getUserCheckins = (params?: {
   page?: number
   size?: number
 }) => {
-  // 后端没有特定的用户签到端点，暂时返回空数组
-  // 实际应该通过签到API获取用户的签到记录
-  console.warn('API端点 /users/checkins 不存在，返回空数组')
-  return Promise.resolve({ records: [], total: 0 })
+  // 使用后端API获取用户的签到记录
+  const queryParams: any = {}
+  if (params?.page) queryParams.page = params.page
+  if (params?.size) queryParams.size = params.size
+  
+  return request.get<any, any>('/users/checkins', { params: queryParams })
 }
 
 // 管理员相关API
@@ -64,9 +69,13 @@ export const getAllUsers = (params?: {
   size?: number
   keyword?: string
 }) => {
-  // 后端没有管理员API端点，暂时返回空数组
-  console.warn('API端点 /admin/users 不存在，返回空数组')
-  return Promise.resolve({ records: [], total: 0 })
+  // 使用后端API获取所有用户列表
+  const queryParams: any = {}
+  if (params?.page) queryParams.page = params.page
+  if (params?.size) queryParams.size = params.size
+  if (params?.keyword) queryParams.keyword = params.keyword
+  
+  return request.get<any, any>('/admin/users', { params: queryParams })
 }
 
 // 更改用户角色
@@ -74,61 +83,40 @@ export const changeUserRole = (data: {
   userId: number
   role: 'participant' | 'organizer' | 'admin'
 }) => {
-  // 后端没有管理员API端点，暂时返回成功
-  console.warn('API端点 /admin/users/:userId/role 不存在，返回成功')
-  return Promise.resolve({ success: true })
+  // 使用后端API更改用户角色
+  return request.put<any, any>(`/admin/users/${data.userId}/role`, { role: data.role })
 }
 
 // 获取系统统计
 export const getSystemStats = () => {
-  // 后端没有管理员API端点，返回模拟数据
-  console.warn('API端点 /admin/stats 不存在，返回模拟数据')
-  return Promise.resolve({
-    totalUsers: 10,
-    totalActivities: 5,
-    approvedActivities: 3,
-    pendingActivities: 2,
-    totalCheckins: 20,
-    completedCheckins: 18,
-  })
+  // 使用后端API获取系统统计
+  return request.get<any, any>('/admin/stats')
 }
 
 // 数据分析相关API
 export const getActivitiesData = (params?: {
   days?: number
 }) => {
-  // 后端没有管理员API端点，返回模拟数据
-  console.warn('API端点 /admin/analytics/activities 不存在，返回模拟数据')
-  return Promise.resolve({
-    daily: Array.from({ length: params?.days || 30 }, (_, i) => ({
-      date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      count: Math.floor(Math.random() * 5),
-    })),
-  })
+  // 使用后端API获取活动数据分析
+  const queryParams: any = {}
+  if (params?.days) queryParams.days = params.days
+  
+  return request.get<any, any>('/admin/analytics/activities', { params: queryParams })
 }
 
 export const getUsersData = (params?: {
   days?: number
 }) => {
-  // 后端没有管理员API端点，返回模拟数据
-  console.warn('API端点 /admin/analytics/users 不存在，返回模拟数据')
-  return Promise.resolve({
-    daily: Array.from({ length: params?.days || 30 }, (_, i) => ({
-      date: new Date(Date.now() - i * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      count: Math.floor(Math.random() * 10),
-    })),
-  })
+  // 使用后端API获取用户数据分析
+  const queryParams: any = {}
+  if (params?.days) queryParams.days = params.days
+  
+  return request.get<any, any>('/admin/analytics/users', { params: queryParams })
 }
 
 export const getRegionData = () => {
-  // 后端没有管理员API端点，返回模拟数据
-  console.warn('API端点 /admin/analytics/regions 不存在，返回模拟数据')
-  return Promise.resolve([
-    { region: '北京', count: 20 },
-    { region: '上海', count: 15 },
-    { region: '广州', count: 12 },
-    { region: '深圳', count: 10 },
-  ])
+  // 使用后端API获取地区数据分析
+  return request.get<any, any>('/admin/analytics/regions')
 }
 
 // 登出

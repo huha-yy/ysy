@@ -32,8 +32,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 CurrentUserHolder.setUserId(userId);
                 CurrentUserHolder.setRole(role);
             }
+            // 继续过滤链，无论是否有token
             filterChain.doFilter(request, response);
         } finally {
+            // 请求处理完成后，清除用户信息
             CurrentUserHolder.clear();
         }
     }

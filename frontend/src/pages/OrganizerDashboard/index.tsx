@@ -14,6 +14,7 @@ import {
   message,
   Modal,
   Statistic,
+  Space,
 } from 'antd'
 import {
   PlusOutlined,
@@ -21,6 +22,10 @@ import {
   CheckCircleOutlined,
   CloseCircleOutlined,
   EditOutlined,
+  ShareAltOutlined,
+  TeamOutlined,
+  EnvironmentOutlined,
+  StarOutlined,
 } from '@ant-design/icons'
 import { 
   getOrganizerActivities, 
@@ -29,6 +34,7 @@ import {
   getRegistrationStats 
 } from '@/api/activity'
 import { useAuthStore } from '@/store/useAuthStore'
+import { useNavigate } from 'react-router-dom'
 import type { Activity, Registration } from '@/types'
 import dayjs from 'dayjs'
 import './index.less'
@@ -38,6 +44,7 @@ const { TextArea } = Input
 
 function OrganizerDashboard() {
   const { user, hasRole } = useAuthStore()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('activities')
   const [activities, setActivities] = useState<Activity[]>([])
@@ -263,6 +270,166 @@ function OrganizerDashboard() {
           pagination={false}
           rowKey="id"
         />
+      ),
+    },
+    {
+      key: 'routes',
+      label: (
+        <span>
+          <ShareAltOutlined />
+          路线管理
+        </span>
+      ),
+      children: (
+        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+          <Title level={4}>路线管理</Title>
+          <Paragraph>
+            在这里可以管理您组织的活动路线，包括创建、编辑和查看路线。
+          </Paragraph>
+          <Space size="large">
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => navigate('/organizer/routes')}
+            >
+              查看所有路线
+            </Button>
+            <Button
+              icon={<PlusOutlined />}
+              onClick={() => {
+                // 如果有活动，选择第一个活动；否则提示先创建活动
+                if (activities.length > 0) {
+                  navigate(`/organizer/routes/create/${activities[0].id}`)
+                } else {
+                  message.warning('请先创建活动，再创建路线')
+                  navigate('/organizer/activities/create')
+                }
+              }}
+            >
+              创建新路线
+            </Button>
+          </Space>
+        </div>
+      ),
+    },
+    {
+      key: 'registration-management',
+      label: (
+        <span>
+          <TeamOutlined />
+          报名管理
+        </span>
+      ),
+      children: (
+        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+          <Title level={4}>报名管理</Title>
+          <Paragraph>
+            在这里可以查看和管理您组织活动的报名申请，包括审核和处理报名信息。
+          </Paragraph>
+          <Space size="large">
+            <Button
+              type="primary"
+              icon={<CheckCircleOutlined />}
+              onClick={() => navigate('/organizer/registrations')}
+            >
+              查看所有报名
+            </Button>
+            <Button
+              icon={<PlusOutlined />}
+              onClick={() => {
+                // 如果有活动，选择第一个活动；否则提示先创建活动
+                if (activities.length > 0) {
+                  message.info(`已跳转到活动 ${activities[0].title} 的报名管理`)
+                } else {
+                  message.warning('请先创建活动，再管理报名')
+                  navigate('/organizer/activities/create')
+                }
+              }}
+            >
+              管理活动报名
+            </Button>
+          </Space>
+        </div>
+      ),
+    },
+    {
+      key: 'feedbacks',
+      label: (
+        <span>
+          <StarOutlined />
+          反馈管理
+        </span>
+      ),
+      children: (
+        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+          <Title level={4}>反馈管理</Title>
+          <Paragraph>
+            在这里可以查看和管理您组织的活动反馈，包括分析反馈统计和改进服务质量。
+          </Paragraph>
+          <Space size="large">
+            <Button
+              type="primary"
+              icon={<EyeOutlined />}
+              onClick={() => navigate('/organizer/feedbacks')}
+            >
+              查看所有反馈
+            </Button>
+            <Button
+              icon={<PlusOutlined />}
+              onClick={() => {
+                // 如果有活动，选择第一个活动；否则提示先创建活动
+                if (activities.length > 0) {
+                  message.info(`已跳转到活动 ${activities[0].title} 的反馈管理`)
+                } else {
+                  message.warning('请先创建活动，再管理反馈')
+                  navigate('/organizer/activities/create')
+                }
+              }}
+            >
+              管理活动反馈
+            </Button>
+          </Space>
+        </div>
+      ),
+    },
+    {
+      key: 'checkpoints',
+      label: (
+        <span>
+          <EnvironmentOutlined />
+          签到点设置
+        </span>
+      ),
+      children: (
+        <div style={{ textAlign: 'center', padding: '40px 0' }}>
+          <Title level={4}>签到点设置</Title>
+          <Paragraph>
+            在这里可以设置和管理活动路线的签到点，确保参与者能够按时签到，提升活动安全性。
+          </Paragraph>
+          <Space size="large">
+            <Button
+              type="primary"
+              icon={<EnvironmentOutlined />}
+              onClick={() => navigate('/organizer/checkpoints')}
+            >
+              查看所有签到点
+            </Button>
+            <Button
+              icon={<PlusOutlined />}
+              onClick={() => {
+                // 如果有活动，选择第一个活动；否则提示先创建活动
+                if (activities.length > 0) {
+                  message.info(`已跳转到活动 ${activities[0].title} 的签到点设置`)
+                } else {
+                  message.warning('请先创建活动，再设置签到点')
+                  navigate('/organizer/activities/create')
+                }
+              }}
+            >
+              设置签到点
+            </Button>
+          </Space>
+        </div>
       ),
     },
   ]

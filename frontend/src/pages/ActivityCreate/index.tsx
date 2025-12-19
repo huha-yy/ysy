@@ -88,11 +88,11 @@ function ActivityCreate() {
         endTime: endTime.format('YYYY-MM-DDTHH:mm:ss'),
         capacity: allValues.capacity,
         feeInfo: allValues.feeInfo,
-        requirementInfo: {
+        requirementInfo: JSON.stringify({
           experience,
           health,
           gear,
-        },
+        }),
       }
 
       console.log('提交的活动数据:', formData)

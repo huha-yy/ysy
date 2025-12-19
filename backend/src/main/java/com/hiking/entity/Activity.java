@@ -31,7 +31,7 @@ public class Activity implements Serializable {
     /**
      * 组织者用户ID
      */
-    @TableField("organizer_id")
+    @TableField(value = "organizer_id", fill = FieldFill.INSERT)
     @Schema(description = "组织者用户ID", example = "1")
     private Long organizerId;
 

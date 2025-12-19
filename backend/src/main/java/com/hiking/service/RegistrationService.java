@@ -13,5 +13,10 @@ public interface RegistrationService {
     PageResult<Registration> pageRegistrations(int page, int size, RegistrationQueryRequest query);
 
     void reviewRegistration(RegistrationReviewRequest request);
+    
+    /**
+     * 获取当前用户对指定活动的报名记录
+     */
+    Registration getUserRegistrationForActivity(Long activityId);
 }
 
