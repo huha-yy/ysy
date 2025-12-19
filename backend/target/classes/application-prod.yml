@@ -1,0 +1,60 @@
+# ==========================================
+# 生产环境配置
+# ==========================================
+
+spring:
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://your-production-host:3306/outdoor_hiking?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123666888
+
+  # Redis 配置（暂时不使用）
+  # data:
+  #   redis:
+  #     host: ${REDIS_HOST:localhost}
+  #     port: ${REDIS_PORT:6379}
+  #     database: 0
+  #     password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 10
+          min-idle: 5
+          max-wait: -1ms
+
+# MyBatis Plus 生产环境配置
+mybatis-plus:
+  configuration:
+    # 生产环境关闭SQL日志
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+ 
+
+# 日志级别 - 生产环境
+logging:
+  level:
+    root: WARN
+    com.hiking: INFO
+    com.hiking.mapper: WARN
+  file:
+    # 生产环境日志文件配置
+    path: /var/logs/outdoor-hiking
+    name: /var/logs/outdoor-hiking/outdoor-hiking.log
+    # 日志文件最大大小
+    max-size: 100MB
+    # 日志文件最大保留天数
+    max-history: 30
+
+# JWT 生产环境配置
+jwt:
+  # 生产环境务必使用环境变量或配置中心
+  secret: ${JWT_SECRET:outdoor-hiking-system-jwt-secret-key-2025-change-me-in-production}
+  expiration: 604800000
+
+# 服务器配置
+server:
+  port: ${SERVER_PORT:8080}
+

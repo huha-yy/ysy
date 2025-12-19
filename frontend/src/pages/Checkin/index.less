@@ -1,0 +1,86 @@
+.checkin-page {
+  padding: 20px 0;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  
+  .checkin-info {
+    margin-top: 16px;
+  }
+  
+  .checkin-actions {
+    margin-top: 16px;
+    text-align: center;
+  }
+  
+  .route-info {
+    height: 100%;
+    
+    .route-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    
+    .route-details {
+      display: flex;
+      margin-bottom: 16px;
+      
+      div {
+        flex: 1;
+        text-align: center;
+        padding: 8px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        margin-right: 8px;
+        
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    
+    .checkpoint-list {
+      margin-top: 16px;
+      
+      .checkpoint-item {
+        cursor: pointer;
+        transition: background-color 0.2s;
+        
+        &:hover {
+          background-color: #f5f5f5;
+        }
+        
+        &.checked {
+          background-color: #f6ffed;
+          border-color: #b7eb8f;
+        }
+        
+        &.current {
+          background-color: #e6f7ff;
+          border-color: #1890ff;
+        }
+        
+        .checkpoint-content {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          
+          .checkpoint-name {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+  
+  .checkin-confirm {
+    p {
+      margin-bottom: 16px;
+    }
+  }
+}
