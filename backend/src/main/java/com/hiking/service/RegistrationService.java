@@ -4,6 +4,7 @@ import com.hiking.common.PageResult;
 import com.hiking.dto.registration.RegistrationQueryRequest;
 import com.hiking.dto.registration.RegistrationReviewRequest;
 import com.hiking.entity.Registration;
+import com.hiking.vo.RegistrationVO;
 
 /**
  * 报名服务
@@ -11,6 +12,8 @@ import com.hiking.entity.Registration;
 public interface RegistrationService {
 
     PageResult<Registration> pageRegistrations(int page, int size, RegistrationQueryRequest query);
+
+    PageResult<RegistrationVO> pageRegistrationsWithDetails(int page, int size, RegistrationQueryRequest query);
 
     void reviewRegistration(RegistrationReviewRequest request);
     

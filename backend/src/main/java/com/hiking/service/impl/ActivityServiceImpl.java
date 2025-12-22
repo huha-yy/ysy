@@ -9,6 +9,7 @@ import com.hiking.common.Constants;
 import com.hiking.common.PageResult;
 import com.hiking.common.SecurityUtils;
 import com.hiking.dto.activity.ActivityCreateRequest;
+import com.hiking.dto.activity.ActivityRegisterRequest;
 import com.hiking.dto.activity.ActivityUpdateRequest;
 import com.hiking.entity.Activity;
 import com.hiking.entity.Registration;
@@ -219,5 +220,69 @@ public class ActivityServiceImpl extends ServiceImpl<ActivityMapper, Activity> i
         
         // 转换为 VO
         return ActivityVO.fromEntity(activity, organizerName, currentParticipants);
+    }
+    
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Registration registerActivity(Long activityId, ActivityRegisterRequest request) {
+        // 检查活动是否存在
+        Activity activity = activityMapper.selectById(activityId);
+        if (activity == null) {
+            throw new BusinessException(ACTIVITY_NOT_FOUND);
+        }
+        
+        // 检查活动状态
+        if (!"approved".equals(activity.getStatus())) {
+            throw new BusinessException(4000, "活动未通过审核，无法报名");
+        }
+        
+        // 检查活动是否已结束
+        if (activity.getEndTime().isBefore(java.time.LocalDateTime.now())) {
+            throw new BusinessException(4000, "活动已结束，无法报名");
+        }
+        
+        // 检查是否已报名
+        Long currentUserId = SecurityUtils.getUserId();
+        LambdaQueryWrapper<Registration> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Registration::getActivityId, activityId)
+                   .eq(Registration::getUserId, currentUserId)
+                   .ne(Registration::getStatus, "cancelled");
+        
+        Registration existingRegistration = registrationMapper.selectOne(queryWrapper);
+        if (existingRegistration != null) {
+            throw new BusinessException(4000, "您已报名此活动，请勿重复报名");
+        }
+        
+        // 检查报名人数是否已满
+        Integer currentParticipants = Math.toIntExact(registrationMapper.selectCount(
+            new LambdaQueryWrapper<Registration>()
+                .eq(Registration::getActivityId, activityId)
+                .eq(Registration::getStatus, "approved")
+        ));
+        
+        if (currentParticipants >= activity.getCapacity()) {
+            throw new BusinessException(4000, "活动报名人数已满");
+        }
+        
+        // 创建报名记录
+        Registration registration = new Registration();
+        registration.setActivityId(activityId);
+        registration.setUserId(currentUserId);
+        registration.setStatus("pending"); // 默认为待审核状态
+        registration.setSubmittedAt(java.time.LocalDateTime.now());
+        registration.setQualificationInfo(request.getQualificationInfo());
+        registration.setNotes(request.getNotes());
+        
+        registrationMapper.insert(registration);
+        
+        // 发送系统通知给组织者
+        systemEventService.publishNotification(
+            activityId, 
+            activity.getOrganizerId(), 
+            "新报名通知", 
+            "活动有新的报名申请，请及时审核"
+        );
+        
+        return registration;
     }
 }

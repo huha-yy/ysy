@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hiking.mapper.RegistrationMapper">
+
+    <resultMap id="RegistrationVOMap" type="com.hiking.vo.RegistrationVO">
+        <id property="id" column="id"/>
+        <result property="activityId" column="activity_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="status" column="status"/>
+        <result property="submittedAt" column="submitted_at"/>
+        <result property="reviewedBy" column="reviewed_by"/>
+        <result property="reviewedAt" column="reviewed_at"/>
+        <result property="notes" column="notes"/>
+        <result property="qualificationInfo" column="qualification_info"/>
+        <result property="createdBy" column="created_by"/>
+        <result property="updatedBy" column="updated_by"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+        <!-- 用户信息关联 -->
+        <association property="user" javaType="com.hiking.entity.User">
+            <id property="id" column="user_id"/>
+            <result property="username" column="username"/>
+            <result property="realName" column="real_name"/>
+            <result property="email" column="email"/>
+            <result property="mobile" column="mobile"/>
+            <result property="role" column="role"/>
+        </association>
+        <!-- 活动信息关联 -->
+        <association property="activity" javaType="com.hiking.entity.Activity">
+            <id property="id" column="activity_id"/>
+            <result property="title" column="activity_title"/>
+            <result property="summary" column="activity_summary"/>
+            <result property="location" column="activity_location"/>
+            <result property="startTime" column="activity_start_time"/>
+            <result property="endTime" column="activity_end_time"/>
+        </association>
+    </resultMap>
+
+    <select id="pageRegistrationsWithDetails" resultMap="RegistrationVOMap">
+        SELECT 
+            r.id,
+            r.activity_id,
+            r.user_id,
+            r.status,
+            r.submitted_at,
+            r.reviewed_by,
+            r.reviewed_at,
+            r.notes,
+            r.qualification_info,
+            r.created_by,
+            r.updated_by,
+            r.created_at,
+            r.updated_at,
+            u.username,
+            u.real_name,
+            u.email,
+            u.mobile,
+            u.role,
+            a.title as activity_title,
+            a.summary as activity_summary,
+            a.location as activity_location,
+            a.start_time as activity_start_time,
+            a.end_time as activity_end_time
+        FROM registrations r
+        LEFT JOIN users u ON r.user_id = u.id
+        LEFT JOIN activities a ON r.activity_id = a.id
+        <where>
+            <if test="query != null">
+                <if test="query.activityId != null">
+                    AND r.activity_id = #{query.activityId}
+                </if>
+                <if test="query.status != null and query.status != ''">
+                    AND r.status = #{query.status}
+                </if>
+            </if>
+        </where>
+        ORDER BY r.submitted_at DESC
+    </select>
+
+</mapper>

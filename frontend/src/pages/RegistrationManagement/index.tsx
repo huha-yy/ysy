@@ -208,17 +208,29 @@ function RegistrationManagement() {
       title: '用户',
       dataIndex: 'user',
       key: 'user',
-      render: (user: any) => (
-        <Space>
-          <UserOutlined />
-          <div>
-            <div>{user?.realName || user?.username}</div>
-            <div style={{ fontSize: 12, color: '#999' }}>
-              {user?.username}
-            </div>
-          </div>
-        </Space>
-      ),
+      render: (user: any) => {
+        // 如果用户信息存在，显示用户信息
+        if (user && (user.realName || user.username)) {
+          return (
+            <Space>
+              <UserOutlined />
+              <div>
+                <div>{user.realName || user.username}</div>
+                <div style={{ fontSize: 12, color: '#999' }}>
+                  {user.username}
+                </div>
+              </div>
+            </Space>
+          )
+        }
+        // 如果没有用户信息，显示"未知"
+        return (
+          <Space>
+            <UserOutlined />
+            <div>未知</div>
+          </Space>
+        )
+      },
     },
     {
       title: '活动',

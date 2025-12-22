@@ -26,7 +26,12 @@ export const getActivityRoutes = (activityId: number) => {
 
 // 报名活动
 export const registerActivity = (activityId: number, data: any) => {
-  return request.post<any, Registration>(`/activities/${activityId}/registrations`, data)
+  // 确保请求体包含activityId
+  const requestData = {
+    ...data,
+    activityId,
+  }
+  return request.post<any, Registration>(`/activities/${activityId}/registrations`, requestData)
 }
 
 // 获取活动报名状态
@@ -51,7 +56,7 @@ export const deleteActivity = (id: number) => {
 
 // 更改活动状态
 export const changeActivityStatus = (id: number, status: string) => {
-  return request.patch(`/activities/${id}/status`, { status })
+  return request.patch(`/activities/${id}/status?status=${status}`)
 }
 
 // 获取活动统计

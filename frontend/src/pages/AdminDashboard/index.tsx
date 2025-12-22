@@ -181,6 +181,12 @@ function AdminDashboard() {
   // 快捷导航项
   const quickActions = [
     {
+      title: '活动审核',
+      icon: <CalendarOutlined />,
+      color: '#ff4d4f',
+      path: '/admin/activities/review',
+    },
+    {
       title: '用户管理',
       icon: <UserOutlined />,
       color: '#1890ff',

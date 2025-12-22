@@ -3,8 +3,10 @@ package com.hiking.controller;
 import com.hiking.common.PageResult;
 import com.hiking.common.Result;
 import com.hiking.dto.activity.ActivityCreateRequest;
+import com.hiking.dto.activity.ActivityRegisterRequest;
 import com.hiking.dto.activity.ActivityUpdateRequest;
 import com.hiking.entity.Activity;
+import com.hiking.entity.Registration;
 import com.hiking.service.ActivityService;
 import com.hiking.vo.ActivityVO;
 import jakarta.validation.Valid;
@@ -51,6 +53,11 @@ public class ActivityController {
         activityService.requireOrganizerOrAdmin(id);
         activityService.changeStatus(id, status);
         return Result.success("活动状态已更新");
+    }
+    
+    @PostMapping("/{id}/registrations")
+    public Result<Registration> register(@PathVariable Long id, @RequestBody ActivityRegisterRequest request) {
+        return Result.success(activityService.registerActivity(id, request));
     }
 }
 

@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { Form, Input, Button, Card, App } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { login } from '@/api/auth'
+import { login, getCurrentUser } from '@/api/auth'
 import { useAuthStore } from '@/store/useAuthStore'
 import './index.less'
 
@@ -14,18 +14,24 @@ function Login() {
   const handleSubmit = async (values: { username: string; password: string }) => {
     try {
       const res = await login(values)
-      // 从登录响应构建用户对象
-      const user = {
-        id: res.userId,
-        username: res.username,
-        email: '', // 登录响应中没有这个字段
-        phone: '', // 登录响应中没有这个字段
-        role: res.role,
-        createdAt: new Date().toISOString()
+      // 登录成功后，获取完整的用户信息
+      try {
+        const user = await getCurrentUser()
+        setAuth(res.token, user.data)
+        message.success('登录成功')
+        navigate('/')
+      } catch (userError) {
+        console.error('获取用户信息失败:', userError)
+        // 如果获取用户信息失败，至少设置基本用户信息
+        const basicUser = {
+          id: res.userId,
+          username: res.username,
+          role: res.role,
+        }
+        setAuth(res.token, basicUser)
+        message.warning('登录成功，但获取用户详细信息失败')
+        navigate('/')
       }
-      setAuth(res.token, user)
-      message.success('登录成功')
-      navigate('/')
     } catch (error) {
       message.error('登录失败，请检查用户名和密码')
     }

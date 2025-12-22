@@ -146,7 +146,7 @@ function ActivityList() {
                         <div className="card-cover">
                           <img
                             alt={activity.title}
-                            src={activity.coverImage || 'https://via.placeholder.com/300x200'}
+                            src={activity.coverImage || '/images/default-activity-cover.svg'}
                           />
                           <Tag
                             color={getDifficultyColor(activity.difficulty)}

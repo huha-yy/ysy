@@ -248,7 +248,7 @@ function ActivityDetail() {
               cover={
                 <div className="activity-cover">
                   <img 
-                    src={activity.coverImage || 'https://via.placeholder.com/800x400'} 
+                    src={activity.coverImage || '/images/default-activity-cover.svg'} 
                     alt={activity.title} 
                   />
                   <div className="activity-overlay">

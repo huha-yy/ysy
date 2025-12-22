@@ -24,6 +24,7 @@ const FeedbackManagement = lazy(() => import('./pages/FeedbackManagement'))
 const CheckpointSettings = lazy(() => import('./pages/CheckpointSettings'))
 const CheckinStatistics = lazy(() => import('./pages/CheckinStatistics'))
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'))
+const ActivityReview = lazy(() => import('./pages/ActivityReview'))
 const UserManagement = lazy(() => import('./pages/UserManagement'))
 const DataAnalytics = lazy(() => import('./pages/DataAnalytics'))
 const UserAchievements = lazy(() => import('./pages/UserAchievements'))
@@ -76,6 +77,7 @@ function AppRouter() {
             {/* 管理员路由 */}
             <Route path="admin">
               <Route index element={<AdminDashboard />} />
+              <Route path="activities/review" element={<ActivityReview />} />
               <Route path="routes" element={<RouteList />} />
               <Route path="trajectory" element={<TrajectoryMonitor />} />
               <Route path="users" element={<UserManagement />} />

@@ -6,6 +6,7 @@ import com.hiking.dto.registration.RegistrationQueryRequest;
 import com.hiking.dto.registration.RegistrationReviewRequest;
 import com.hiking.entity.Registration;
 import com.hiking.service.RegistrationService;
+import com.hiking.vo.RegistrationVO;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +22,11 @@ public class RegistrationController {
     private final RegistrationService registrationService;
 
     @GetMapping
-    public Result<PageResult<Registration>> page(
+    public Result<PageResult<RegistrationVO>> page(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "10") int size,
             @Valid RegistrationQueryRequest query) {
-        return Result.success(registrationService.pageRegistrations(page, size, query));
+        return Result.success(registrationService.pageRegistrationsWithDetails(page, size, query));
     }
 
     @PatchMapping("/review")

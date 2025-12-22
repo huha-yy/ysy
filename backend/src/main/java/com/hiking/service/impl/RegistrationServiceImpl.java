@@ -9,6 +9,7 @@ import com.hiking.dto.registration.RegistrationQueryRequest;
 import com.hiking.dto.registration.RegistrationReviewRequest;
 import com.hiking.entity.Registration;
 import com.hiking.exception.BusinessException;
+import com.hiking.vo.RegistrationVO;
 import com.hiking.mapper.RegistrationMapper;
 import com.hiking.service.RegistrationService;
 import com.hiking.service.SystemEventService;
@@ -43,6 +44,12 @@ public class RegistrationServiceImpl extends ServiceImpl<RegistrationMapper, Reg
         }
         wrapper.orderByDesc(Registration::getSubmittedAt);
         return PageResult.from(registrationMapper.selectPage(pager, wrapper));
+    }
+
+    @Override
+    public PageResult<RegistrationVO> pageRegistrationsWithDetails(int page, int size, RegistrationQueryRequest query) {
+        Page<RegistrationVO> pager = new Page<>(page, size);
+        return PageResult.from(registrationMapper.pageRegistrationsWithDetails(pager, query));
     }
 
     @Override

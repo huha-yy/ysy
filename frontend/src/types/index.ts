@@ -7,6 +7,9 @@ export interface User {
   phone: string
   role: 'participant' | 'organizer' | 'admin'
   avatar?: string
+  experienceLevel?: string // 徒步经验等级
+  healthStatus?: string // 健康状况描述
+  emergencyContact?: string // 紧急联系人
   createdAt: string
 }
 
