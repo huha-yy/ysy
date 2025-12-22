@@ -257,7 +257,7 @@ CREATE TABLE IF NOT EXISTS activity_stats (
 
 -- 插入管理员账号（密码: admin123 的BCrypt哈希值）
 INSERT INTO users (username, password, role, real_name, mobile, email, created_by, updated_by) 
-VALUES ('admin', '$2a$10$N.zmdr9k7uOCQb376NoUnuTJ8iAt6Z5EHsM8lE9lBOsl7iKTVKIUi', 'admin', '系统管理员', '13800138000', 'admin@hiking.com', 1, 1)
+VALUES ('admin', '123', 'admin', '系统管理员', '13800138000', 'admin@hiking.com', 1, 1)
 ON DUPLICATE KEY UPDATE username=username;
 
 -- 插入测试组织者账号（密码: organizer123）
